@@ -29,9 +29,40 @@ class AcceptanceTester extends \Codeception\Actor
 
         $user->name = 'auto-tester-' . microtime(true);
         $user->password = '$2y$10$jXYjn9kh3pasjX1xvthUuuybpsbps4K.T4UQOJGq/DiRFN3Sev1tG';
-        $this->haveInDatabase('users', $user->toArray());
+        $id = $this->haveInDatabase('users', $user->toArray());
 
+        $user->id = $id;
         $user->password = '1q2w3e4r';
+
+        return $user;
+    }
+
+    /**
+     * @return UserDTO
+     */
+    public function amLoggedIn()
+    {
+        $user = $this->haveUser();
+
+        $this->amOnPage(\Page\LoginPage::$URL);
+        $this->submitForm(\Page\LoginPage::$loginForm, [
+            \Page\LoginPage::$usernameFieldName => $user->name,
+            \Page\LoginPage::$passwordFieldName => $user->password,
+        ]);
+        $this->waitForElement('#home-header');
+
+        return $user;
+    }
+
+    /**
+     * @return UserDTO
+     */
+    public function amOnGameLobby()
+    {
+        $user = $this->amLoggedIn();
+
+        $this->amOnPage(\Page\GameLobbyPage::$URL);
+        $this->waitForElement('#game-lobby');
 
         return $user;
     }
@@ -39,6 +70,7 @@ class AcceptanceTester extends \Codeception\Actor
 
 class UserDTO
 {
+    public $id;
     public $name;
     public $password;
 

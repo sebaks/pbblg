@@ -36,3 +36,32 @@ sudo docker run --name selenium-server -p 4444:4444 -v /dev/shm:/dev/shm -d -it 
 ```bash
 ./vendor/bin/codecept run
 ```
+
+#Настройка окружения для разработки frontend-а
+
+Должен быть установлен docker. [Установить Docker](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#set-up-the-repository)
+
+Один раз собираем image
+```bash
+sudo docker build -f frontend/Dockerfile -t pbblg/frontend .
+```
+
+Поднимаем контейнер
+```bash
+sudo docker run --name pbblg-frontend -v=`pwd`:/home/app -d -it --rm --network host pbblg/frontend
+```
+
+Один раз устанавливаем js зависимости
+```bash
+sudo docker exec -it pbblg-frontend  bash -c "cd frontend && yarn install"
+```
+
+Поднять frontend-dev сервер
+```bash
+sudo docker exec -it pbblg-frontend  bash -c "cd frontend && yarn start"
+```
+
+Сделать билд
+```bash
+sudo docker exec -it pbblg-frontend  bash -c "cd frontend && yarn build"
+```

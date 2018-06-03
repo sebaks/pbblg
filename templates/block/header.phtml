@@ -28,7 +28,7 @@
     </a>
     <?php if($this->isAuthorized()): ?>
         <a class="btn btn-outline-dark mr-1" href="<?=$this->url('admin') ?>">Admin</a>
-        <a id="playGameButton" class="btn btn-primary mr-1" href="/game">Играть</a>
+        <a id="playButton" class="btn btn-primary mr-1" href="/game">Играть</a>
         <a id="logoutButton" class="btn btn-outline-info" href="<?=$this->url('logout') ?>">Выйти</a>
     <?php else: ?>
         <a id="registrationButton" class="btn btn-outline-info mr-1" href="<?=$this->url('register') ?>">Регистрация</a>

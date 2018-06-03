@@ -17,15 +17,19 @@ exit
 
 вначале поднимаем контейнер
 ```bash
-sudo docker run --name pbblg-frontend -v=/home/sebaks/projects/pbblg/frontend:/home/app -d -it --rm --network host pbblg/frontend
+sudo dockerun --name pbblg-frontend -v=`pwd`:/home/app -d -it --rm --network host pbblg/frontend
+```
+остановить контейнер
+```bash
+sudo dockecontainer stop pbblg-frontend
 ```
 
 поднять сервер
 ```bash
-sudo docker exec -it pbblg-frontend yarn start
-sudo docker exec -it pbblg-frontend yarn startTestServer
+sudo docker exec -it pbblg-frontend  bash -c "cd frontend && yarn start"
+sudo docker exec -it pbblg-frontend  bash -c "cd frontend && yarn startTestServer"
 ```
 сделать билд
 ```bash
-sudo docker exec -it pbblg-frontend yarn build
+sudo docker exec -it pbblg-frontend  bash -c "cd frontend && yarn build"
 ```

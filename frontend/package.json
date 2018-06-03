@@ -17,7 +17,7 @@
   "scripts": {
     "startTestServer": "node ./src/testServer",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rm -rf ./../public/game/* && cp -r build/* ./../public/game",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

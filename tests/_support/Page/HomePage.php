@@ -9,4 +9,5 @@ class HomePage
     public static $registrationButton = '#registrationButton';
     public static $loginButton = '#loginButton';
     public static $logoutButton = '#logoutButton';
+    public static $playButton = '#playButton';
 }
