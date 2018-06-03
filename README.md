@@ -51,10 +51,10 @@ sudo docker build -f frontend/Dockerfile -t pbblg/frontend .
 sudo docker run --name pbblg-frontend -v=`pwd`:/home/app -d -it --rm --network host pbblg/frontend
 ```
 
-Один раз устанавливаем js зависимости
+[Один раз устанавливаем js зависимости]
 ```bash
 sudo docker exec -it pbblg-frontend  bash -c "cd frontend && yarn install"
-```
+```]
 
 Поднять frontend-dev сервер
 ```bash
