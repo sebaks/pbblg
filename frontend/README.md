@@ -29,26 +29,3 @@ sudo docker exec -it pbblg-frontend yarn startTestServer
 ```bash
 sudo docker exec -it pbblg-frontend yarn build
 ```
-прогнать тесты
-```bash
-sudo docker exec -it pbblg-frontend yarn test
-```
-
-
-**Selenium server**
-
-затянуть образ
-```bash
-docker pull selenium/standalone-chrome
-```
-поднять контеинер
-```bash
-sudo docker run --name selenium-server -p 4444:4444 -v /dev/shm:/dev/shm -d -it --rm --network host  selenium/standalone-chrome
-```
-
-запустить тесты
-```bash
-sudo docker exec -it pbblg-frontend yarn start
-sudo docker exec -it pbblg-frontend yarn startTestServer
-./vendor/bin/codecept run
-```

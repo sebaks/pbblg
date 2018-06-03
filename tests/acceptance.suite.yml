@@ -8,6 +8,12 @@ actor: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
-            url: http://localhost:3000/
+            url: http://localhost:8080/
             browser: chrome
         - \Helper\Acceptance
+        - Db
+    config:
+        Db:
+            dsn: 'mysql:dbname=pbblg;host=localhost'
+            user: 'pbblg'
+            password: '111'

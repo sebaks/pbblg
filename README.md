@@ -23,3 +23,16 @@ ln -s /home/maxgu/proj/pbblg/vendor/almasaeed2010/adminlte/ /home/maxgu/proj/pbb
 Тепрь шаблон можно видеть по адресу `http://localhost:8080/adminlte/index.html`.
 
 (А у кого виндоуз, то можно просто скопировать папку adminlte в public). 
+
+
+## Запуск тестов
+
+поднять контеинер c selenium
+```bash
+sudo docker run --name selenium-server -p 4444:4444 -v /dev/shm:/dev/shm -d -it --rm --network host  selenium/standalone-chrome
+```
+
+запустить тесты
+```bash
+./vendor/bin/codecept run
+```

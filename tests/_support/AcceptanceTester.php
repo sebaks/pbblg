@@ -20,7 +20,30 @@ class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+    /**
+     * @return UserDTO
+     */
+    public function haveUser()
+    {
+        $user = new UserDTO;
+
+        $user->name = 'auto-tester-' . microtime(true);
+        $user->password = '$2y$10$jXYjn9kh3pasjX1xvthUuuybpsbps4K.T4UQOJGq/DiRFN3Sev1tG';
+        $this->haveInDatabase('users', $user->toArray());
+
+        $user->password = '1q2w3e4r';
+
+        return $user;
+    }
+}
+
+class UserDTO
+{
+    public $name;
+    public $password;
+
+    public function toArray()
+    {
+        return get_object_vars($this);
+    }
 }
