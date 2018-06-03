@@ -63,5 +63,6 @@ sudo docker exec -it pbblg-frontend  bash -c "cd frontend && yarn start"
 
 Сделать билд
 ```bash
-sudo docker exec -it pbblg-frontend  bash -c "cd frontend && yarn build"
+sudo docker exec -it pbblg-frontend  bash -c "cd frontend && yarn build" && sudo chown -R `whoami`:`whoami` public/game/
+
 ```
