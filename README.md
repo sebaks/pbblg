@@ -37,7 +37,7 @@ sudo docker run --name selenium-server -p 4444:4444 -v /dev/shm:/dev/shm -d -it 
 ./vendor/bin/codecept run
 ```
 
-#Настройка окружения для разработки frontend-а
+## Настройка окружения для разработки frontend-а
 
 Должен быть установлен docker. [Установить Docker](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#set-up-the-repository)
 
