@@ -56,7 +56,7 @@ class GameWelcomeContainer extends React.Component {
                             <span className="text-muted pull-left">Open games</span>
                             <div>
                                 <NewGameButtonComponent onClick={this.handleOnNewGameButtonClick} />
-                                <span className="badge badge-secondary badge-pill">{Object.keys(games).length}</span>
+                                <span className="badge badge-secondary badge-pill">{games.length}</span>
                             </div>
                         </h4>
                         <OpenGamesListContainer />

@@ -28,12 +28,14 @@ const app = (state = initialState, action) => {
     switch (action.type) {
 
         case NEW_GAME_WAS_CREATED:
-            let newGames = {};
-            newGames[action.game.id] = action.game;
+            {
+                let newGames = state.games.slice();
+                newGames.unshift(action.game);
 
-            return Object.assign({}, state, {
-                games: Object.assign({}, state.games, newGames),
-            });
+                return Object.assign({}, state, {
+                    games: newGames,
+                });
+            }
 
         case PLAYER_JOINED_GAME:
             let player = action.player;
@@ -89,10 +91,13 @@ const app = (state = initialState, action) => {
             });
 
         case 'RECEIVE_JOIN_GAMES_LIST':
+            {
+                let newGames = action.data.slice();
 
-            return Object.assign({}, state, {
-                games: Object.assign({}, {}, action.data)
-            });
+                return Object.assign({}, state, {
+                    games: newGames,
+                });
+            }
 
         case PLAYER_AUTHENTICATED:
             action.player.id = parseInt(action.player.id, 10);

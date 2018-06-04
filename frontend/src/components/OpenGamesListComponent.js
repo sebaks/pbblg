@@ -23,7 +23,7 @@ const OpenGamesListComponent = ({games, onGameClick}) => (
 );
 
 OpenGamesListComponent.propTypes = {
-    games: PropTypes.objectOf(
+    games: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
             created: PropTypes.string.isRequired
